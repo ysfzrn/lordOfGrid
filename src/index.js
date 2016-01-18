@@ -1,3 +1,3 @@
-var LordofGrid = require('./LOG/lordofgrid');
+import LordOfGrid from './LOG/LordOfGrid';
 
-module.exports = LordofGrid; 
+export default LordofGrid;

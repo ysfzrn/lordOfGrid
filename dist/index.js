@@ -46,9 +46,17 @@
 
 	'use strict';
 
-	var LordofGrid = __webpack_require__(1);
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 
-	module.exports = LordofGrid;
+	var _LordOfGrid = __webpack_require__(1);
+
+	var _LordOfGrid2 = _interopRequireDefault(_LordOfGrid);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = LordofGrid;
 
 /***/ },
 /* 1 */
