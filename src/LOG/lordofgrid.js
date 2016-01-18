@@ -74,7 +74,6 @@ var LordOfGrid = React.createClass({
 	 renderPagination:function(){
 	 	if(this.state.dataSource.length>0 && this.props.pagination){
 		  var paginated = LordOfGridPagination.pageData(this.state.dataSource, this.state);
-		  //this.setState({dataSource:paginated.paginatedData});
 		  return (<LordOfGridPagination paginatedProps={paginated.paginatedProps} 
 			  						 onChange={this.setState.bind(this)} />	);
 		} 
