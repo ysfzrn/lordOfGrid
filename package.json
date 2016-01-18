@@ -1,6 +1,6 @@
 {
   "name": "lordofgrid",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "react grid data table",
   "main": "src/index.js",
   "scripts": {

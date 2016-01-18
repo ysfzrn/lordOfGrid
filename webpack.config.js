@@ -2,7 +2,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: './dist',
-    filename: 'lordofgrid.js'
+    filename: 'index.js'
   },
   devServer: {
     inline: true,
