@@ -1,12 +1,27 @@
+var webpack = require('webpack');
+
 module.exports = {
   entry: './src/index.js',
   output: {
     path: './dist',
-    filename: 'index.js'
+    filename: 'index.js',
+	libraryTarget: 'umd',
+	library: 'ysfzrnLib'
   },
   devServer: {
     inline: true,
     port: 3000
+  },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+        compress: {
+            warnings: false
+        },
+    }),
+  ],
+  externals: {
+    react: 'react',
+    'react/addons': 'react'
   },
   module: {
     loaders: [

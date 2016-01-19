@@ -24,34 +24,39 @@
   "bugs": {
     "url": "https://github.com/ysfzrn/lordofgrid/issues"
   },
+   "babel": {
+    "presets": [
+      "react",
+      "es2015",
+      "stage-0"
+    ]
+  },
   "homepage": "https://github.com/ysfzrn/lordofgrid#readme",
   "dependencies": {
     "babel-core": "^6.2.1",
     "babel-loader": "^6.2.0",
     "babel-preset-es2015": "^6.1.18",
+    "babel-preset-stage-0": "^6.0.15",
     "babel-preset-react": "^6.1.18",
-     "babel-preset-stage-2": "6.1.2",
+    "babel-preset-stage-2": "6.1.2",
+    "babelify": "^7.2.0",
     "classnames": "2.1.4",
-    "jquery": "^2.1.4",
     "expect": "1.12.2",
     "expect-jsx": "2.1.2",
+    "jquery": "^2.1.4",
     "mocha": "2.3.4",
     "react": "^0.14.5",
+    "react-hot-loader": "^1.3.0",
     "react-addons": "^0.9.1-deprecated",
     "react-addons-test-utils": "0.14.6",
     "react-dom": "^0.14.5",
     "underscore": "1.8.3",
-    "webpack": "^1.12.0",
+    "webpack": "^1.12.11",
     "webpack-dev-middleware": "^1.2.0",
     "webpack-dev-server": "^1.14.0",
     "webpack-hot-middleware": "^2.4.1"
   },
   "devDependencies": {
-    "react-heatpack": "^1.5.0"
-  },
-  "browserify": {
-    "transform": [
-      "reactify"
-    ]
+    "watchify": "^3.2.2"
   }
 }
