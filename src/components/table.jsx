@@ -1,25 +1,12 @@
 import React from 'react';
-import LordOfGridHeader from './LordOfGridHeader';
-import LordOfGridBody from './LordOfGridBody';
+import Header from './header';
+import Body from './body';
 import _ from 'underscore';
 
-var LordOfGridTable = React.createClass({
-    componentDidMount:function(){
-    	$(function(){
-           $('#myTable').colResizable({
-           	  fixed:false,
-           	  minWidth:30,
-           	  liveDrag:true,
-           	  gripInnerHtml:"<div className='grip'></div>",
-           	  draggingClass:"dragging",
-           	  postbackSafe:true,
-		partialRefresh:true
-		  });
-
-        });
 
 
-    },
+var Table = React.createClass({
+    
 
     handleRowSelect:function(data){
 	    if (this.props.selectable) {
@@ -52,7 +39,7 @@ var LordOfGridTable = React.createClass({
     renderBody:function(){
      const rows = _.map(this.props.data,function(data, index){
       return (
-        <LordOfGridBody
+        <Body
           data={data}
           key={index}
           data-idx={index}
@@ -77,19 +64,21 @@ var LordOfGridTable = React.createClass({
 
 
     render: function() {
-    	var divStyle={'overflowX':'hidden',
-                    'overflowY':'scroll',
-    				        'height':'500px'}
+    	var divStyle={'overflow':'scroll',
+    				  'height':'500px'}
 
 		return (
- 			<div className="col col-sm-4 col-md-12"  style={divStyle}>
- 			 <table id='myTable' className={this.props.tableClass}>
-			   <LordOfGridHeader headerClass={this.props.headerClass} 
-			                     columns={this.props.columns} 
-			                     selectable={this.props.selectable}
-			                     onHeaderCheck={this.props.onHeaderCheck}
-			                     headerFullSelect={this.props.headerFullSelect}
-			                     multiselectable={this.props.multiselectable} />
+ 			<div style={divStyle}>
+ 			 <table  className={this.props.className}>
+			  <Header columns={this.props.columns} 
+                  headerStyle={this.props.headerStyle}
+                  headerRowStyle={this.props.headerRowStyle}
+                    headerClassName={this.props.headerClassName}
+                    selectable={this.props.selectable}
+                    headerFullSelect={this.props.headerFullSelect}
+                    multiselectable={this.props.multiselectable}
+                    onHeaderCheck={this.props.onHeaderCheck}
+                    />
 			   {this.renderBody()}
 			 </table>  
 			</div> 
@@ -98,4 +87,4 @@ var LordOfGridTable = React.createClass({
 
 });
 
-module.exports = LordOfGridTable;
+module.exports = Table;

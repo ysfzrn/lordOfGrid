@@ -1,7 +1,7 @@
 import React from 'react';
-import util from '../util';
+import utils from '../app/util.js';
 
-var LordOfGridSearch = React.createClass({
+var Search = React.createClass({
    
    handleInput:function(){
    		this.props.searchInputChange(this.refs.searchInput.value);
@@ -30,7 +30,7 @@ var LordOfGridSearch = React.createClass({
    renderSearch:function(){
 		if(this.props.filterable){
 			return ( 
-			<form className="form col-sm-6 col-lg-4 col-md-4">
+			<form>
 			  <label htmlFor="searchInput" className="control-label">Arama</label>
 			  <input id="searchInput" ref="searchInput" type="text" className="form-control" onChange={this.handleInput}/>
 			  <br/>
@@ -53,4 +53,4 @@ var LordOfGridSearch = React.createClass({
 
 });
 
-module.exports = LordOfGridSearch;
+module.exports = Search;

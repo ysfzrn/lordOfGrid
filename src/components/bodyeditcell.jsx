@@ -2,7 +2,7 @@ import React from 'react';
 import ClassNames from 'classnames';
 
 
-var LordOfGridEditCell = React.createClass({
+var BodyEditCell = React.createClass({
 
 	renderEditCell:function(){
 		var inputType = this.props.inputType;
@@ -41,6 +41,7 @@ var LordOfGridEditCell = React.createClass({
 
 
   handleEditEnter:function(key, type, event){
+  	event.preventDefault();
     var value='';
     if(type==='checkbox'){
        value = this.refs.cb.checked;
@@ -74,4 +75,4 @@ var LordOfGridEditCell = React.createClass({
 
 });
 
-module.exports = LordOfGridEditCell;
+module.exports = BodyEditCell;

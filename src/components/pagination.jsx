@@ -1,4 +1,10 @@
 import React from 'react';
+import SelectField from 'material-ui/lib/select-field';
+import MenuItem from 'material-ui/lib/menus/menu-item';
+import RaisedButton from 'material-ui/lib/raised-button';
+import ArrowBack from 'material-ui/lib/svg-icons/navigation/arrow-back';
+import ArrowForward from 'material-ui/lib/svg-icons/navigation/arrow-forward';
+
 
 class Pagination extends React.Component{
   constructor(props) {
@@ -37,26 +43,43 @@ class Pagination extends React.Component{
     let o = this.props.paginatedProps;
     let prev = o.page === o.pageOptions[0];
     let next = o.page === o.pageOptions[o.pageOptions.length - 1];
+
+    var btnGroupStyle={'verticalAlign':'bottom'}
+
     return (
-      <div className="well">
-          <div className="row">
-          <div className="col-md-6">
-            Toplam Kayıt:<strong>{this.props.paginatedProps.total}</strong> Kayıt aralığı
-            <strong>{o.itemStart}</strong> - <strong>{this.props.paginatedProps.itemEnd}</strong>
-          </div>
-          <div className="col-md-6">
-            <div className="pageControls pull-right">
-              <button className="btn btn-xs btn-default glyphicon glyphicon-triangle-left" onClick={this.updateSettings.bind(this,"page",o.page - 1)} disabled={prev} />
-              <DropDownMenu value={o.page} options={o.pageOptions} ref="page" onChange={this.updateSettings.bind(this, "page")} />
-              <button className="btn btn-xs btn-default glyphicon glyphicon-triangle-right" onClick={this.updateSettings.bind(this,"page", o.page + 1)} disabled={next} />
+          <div className="container-fluid">
+              <div className="col-md-4">
+                <DropDownMenuN value={o.displayCount} options={this.props.displayCountOptions} ref="displayCount" onChange={this.updateSettings.bind(this, "displayCount")} />
+                Toplam Kayıt:<strong>{this.props.paginatedProps.total}</strong> Kayıt aralığı
+                <strong>{o.itemStart}</strong> - <strong>{this.props.paginatedProps.itemEnd}</strong>
+              </div>
+          
+          <div className="col-md-8 btn-group" style={btnGroupStyle} role="group">
+            
+             <div className="btn btn-secondary"> 
+              <RaisedButton onClick={this.updateSettings.bind(this,"page",o.page - 1)} disabled={prev}
+                          label="Geri"
+                          labelPosition="after"
+                          primary={true}
+                          icon={<ArrowBack /> } />
+              <DropDownMenuN value={o.page} options={o.pageOptions} ref="page" onChange={this.updateSettings.bind(this, "page")} />
+              <RaisedButton onClick={this.updateSettings.bind(this,"page", o.page + 1)} disabled={next}
+                          label="İleri"
+                          labelPosition="before"
+                          primary={true}
+                          icon={<ArrowForward /> } />
+              
             </div>
-            <div className="itemOption pull-right">
-              <DropDownMenu value={o.displayCount} options={this.props.displayCountOptions} ref="displayCount" onChange={this.updateSettings.bind(this, "displayCount")} />
-            </div>
+
+
+            
           </div>
-          <div className="clearfix"></div>
+
+           
+
+
           </div>
-      </div>
+   
     );
   }
 };
@@ -102,11 +125,12 @@ class PagedData {
 }
 
 
-class DropDownMenu extends React.Component {
+class DropDownMenuN extends React.Component {
   handleClick(key) {
     this.props.onChange(this.props.options[key]);
   }
   render() {
+    var style={"width":"100px", 'height':'36px' }
     var optionList = this.props.options.map( function (option, key) {
       return (
         <li key={key}><a onClick={this.handleClick.bind(this, key)} >{option}</a></li>
@@ -114,7 +138,7 @@ class DropDownMenu extends React.Component {
     }, this)
     return(
       <div className="btn-group">
-        <button type="button" className="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown">
+        <button style={style} type="button" className="btn btn-xs btn-info dropdown-toggle" data-toggle="dropdown">
           {this.props.value} <span className="caret"></span>
         </button>
         <ul className="dropdown-menu" role="menu">
@@ -124,5 +148,30 @@ class DropDownMenu extends React.Component {
     );
   }
 };
+
+
+const DropDownMenu =React.createClass({
+  
+  handleClick(key) {
+    this.props.onChange(this.props.options[key]);
+  },    
+
+  render() {
+    var optionList = this.props.options.map( function (option, key) {
+      return (
+        <MenuItem  key={key} primaryText={option} onClick={this.handleClick.bind(this, key)} value={option} />
+      )
+    }, this)
+
+    var style={"width":"100px" }
+    return(
+      <div>
+        <SelectField style={style}   value={this.props.value}>
+          {optionList}
+        </SelectField>
+      </div>
+    );
+  },
+});
 
 export default Pagination;

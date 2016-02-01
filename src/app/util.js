@@ -1,8 +1,8 @@
-var initialData=[];
-var displayedData=[];
+let initialData=[];
+let displayedData=[];
 
-var selectedIndex=[];
-var selectedItems=[];
+let selectedIndex=[];
+let selectedItems=[];
 
 export default {
  
@@ -46,12 +46,12 @@ export default {
 
   getSelectedItems(){
     selectedItems =[];
-    var sortedKeys = Object.keys(displayedData).sort();
-    for(var i=0; i< selectedIndex.length; i++){
+    const sortedKeys = Object.keys(displayedData).sort();
+    for(let i=0; i< selectedIndex.length; i++){
          selectedItems.push(displayedData[sortedKeys[selectedIndex[i]]]);
     }
 
     return selectedItems;
-  }
+  },
 
 };
